@@ -1,0 +1,50 @@
+{
+  "test": {
+    "operator": "sqrt",
+    "value1": 100
+  },
+  "CorrectLastValue": {
+    "operator": "add",
+    "value1": 700,
+    "value2": 100
+  },
+  "CorectSqrt": {
+    "operator": "sqrt",
+    "value1": 9
+  },
+  "IncorectOperatorValue": {
+    "operator": "add",
+    "value1": "a",
+    "value2": 3
+  },
+  "IncorectOperatorName": {
+    "operator": "aza",
+    "value1": 2,
+    "value2": 4
+  },
+  "IncorectValue1Missing": {
+    "operator": "add",
+    "value2": 3
+  },
+  "IncorectValue2Missing": {
+    "operator": "add",
+    "value1": 3
+  },
+  "IncorectValue1WrongDataType": {
+    "operator": "add",
+    "value1": "a",
+    "value2": 3
+  },
+  "IncorectValue2WrongDataType": {
+    "operator": "add",
+    "value1": 1,
+    "value2": "z"
+  },
+  "IncorectFieldName": {
+    "IncorectName": "add",
+    "value1": 1,
+    "value2": 2
+  },
+
+  "IncorectSingleField": "data"
+}

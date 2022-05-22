@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWI.INTERFACE
 {
-    internal interface IReader
+    public interface IReader
     {
         string GetData();
     }
