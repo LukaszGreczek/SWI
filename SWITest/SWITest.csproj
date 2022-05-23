@@ -17,10 +17,4 @@
     <ProjectReference Include="..\SWI\SWI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="input.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

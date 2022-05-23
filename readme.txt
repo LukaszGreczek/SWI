@@ -1,8 +1,8 @@
-This program is designed to calculete simple mathematical operations like addition subtract multiplication square root.
+This program is designed to calculate simple mathematical operations like addition subtract multiplication square root.
 In program directory user should add a file named input.json to calculate. Result will be saved in the file output.txt in program directory.
 
 Requirements to correct use a program:
--In JSON file subsequent operations will be added as a object. 
+-In JSON file subsequent operations will be added as an object. 
 example: 
 {
 "obj1": {
@@ -17,4 +17,4 @@ example:
 } 
 
 -"operator" have one of four values add, sub, mul, sqrt;
--"value1" and "value2" should be Intiger
+-"value1" and "value2" should be Integer

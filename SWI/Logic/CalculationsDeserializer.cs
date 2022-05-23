@@ -6,19 +6,15 @@ using System.Text.Json;
 
 namespace SWI.Logic
 {
-    public class CalculationsDeserializer
+    public static class CalculationsDeserializer
     {
-        private string json;
-        private Dictionary<string, Calculation> calculationDictionary = new Dictionary<string, Calculation>();
-        public Dictionary<string, Calculation> ReturnCalculations() { return calculationDictionary; }
-        public CalculationsDeserializer(string json)
-        {
-            this.json = json;
-            Deserialize();
-        }
+        
 
-        private void Deserialize()
+
+        public static Dictionary<string,Calculation>  Deserialize(string json)
         {
+            var calculationDictionary = new Dictionary<string, Calculation>();
+            
             try { 
                 CalculationDictionary cDictionary = JsonSerializer.Deserialize<CalculationDictionary>(json);
                 foreach (var c in cDictionary.Calculations)
@@ -35,13 +31,13 @@ namespace SWI.Logic
             {
                 System.Console.WriteLine("Json data wrong format");
             }
-            
 
+            return calculationDictionary;
 
 
         }
 
-        private Calculation TryDeserializeElement(JsonElement element)
+        private static Calculation TryDeserializeElement(JsonElement element)
         {
             if (element.Equals(null)) { return null; }
 

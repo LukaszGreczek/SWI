@@ -28,8 +28,7 @@ namespace SWI
             
             if(inputString != null)
             {
-                var calcsDeserializer = new CalculationsDeserializer(inputString);
-                var calculations = calcsDeserializer.ReturnCalculations();
+                var calculations = CalculationsDeserializer.Deserialize(inputString);
                 output.PrintResult(BatchCalculator.DoCalculate(calculations));
             }
             else
