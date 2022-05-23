@@ -1,28 +1,40 @@
-﻿using SWI.INTERFACE;
+﻿using SWI.Interfaces;
 using SWI.IO;
 using SWI.Logic;
 using System;
-using System.Collections.Generic;
 
 namespace SWI
 {
     internal class Program
     {
+        const string inputFilePath = "input.json";
+        const string outputFilePath = "output.txt";
         static void Main(string[] args)
         {
-            IReader iReader = new JsonFileReader();
-            ResultOutput output = new ResultOutput();
-            
-            if(iReader.GetData() != null)
+
+            string inputString;
+            try
             {
-                JsonDeserialize jsonDeserialize = new JsonDeserialize(iReader.GetData());
-                Dictionary<string,Calculation> ab = jsonDeserialize.ReturnDicrionary();
-                Calculete calc = new Calculete(ab);
-                output.PrintResult(calc.DoCalculate());
+                IInputDataReader iReader = new TextFileInputDataReader(inputFilePath);
+                inputString = iReader.ReadData();
+            }
+            catch (UriFormatException)
+            {
+                Console.WriteLine("Invalid input path");
+                return;
+            }
+
+            ResultTextFilePrinter output = new ResultTextFilePrinter(outputFilePath);//
+            
+            if(inputString != null)
+            {
+                var calcsDeserializer = new CalculationsDeserializer(inputString);
+                var calculations = calcsDeserializer.ReturnCalculations();
+                output.PrintResult(BatchCalculator.DoCalculate(calculations));
             }
             else
             {
-                Console.WriteLine("File not found.");
+                Console.WriteLine("Input file not found.");
             }
 
         }

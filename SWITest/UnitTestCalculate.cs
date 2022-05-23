@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SWI;
+using SWI.Enums;
 using SWI.Logic;
+using SWI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,33 +21,46 @@ namespace SWITest
             Dictionary<string, Calculation> data = new Dictionary<string, Calculation>();
 
             Calculation testcalc = new Calculation();
-            testcalc.OperationType = SWI.ENUM.OperationTypes.sqrt;
+            testcalc.Operation = OperationType.Sqrt;
             testcalc.value1 = 100;
             testcalc.value2 = 0;
 
             Calculation correctLastValue = new Calculation();
-            correctLastValue.OperationType = SWI.ENUM.OperationTypes.add;
+            correctLastValue.Operation = OperationType.Add;
             correctLastValue.value1 = 700;
             correctLastValue.value2 = 100;
 
             Calculation corectSqrt = new Calculation();
-            corectSqrt.OperationType = SWI.ENUM.OperationTypes.sqrt;
+            corectSqrt.Operation = OperationType.Sqrt;
             corectSqrt.value1 = 9;
             corectSqrt.value2 = 0;
+
+            Calculation corectSub = new Calculation();
+            corectSqrt.Operation = OperationType.Sqrt;
+            corectSqrt.value1 = 9;
+            corectSqrt.value2 = 9;
+
+            Calculation corectMul = new Calculation();
+            corectSqrt.Operation = OperationType.Sqrt;
+            corectSqrt.value1 = 9;
+            corectSqrt.value2 = 9;
 
             data.Add("test", testcalc);
             data.Add("CorrectLastValue", correctLastValue);
             data.Add("CorectSqrt", corectSqrt);
+            data.Add("CorectSub", corectSub);
+            data.Add("CorectMul", corectMul);
 
             Dictionary<string, double> expected = new Dictionary<string, double>();
             expected.Add("test", 10);
             expected.Add("CorrectLastValue", 800);
             expected.Add("CorectSqrt", 3);
+            expected.Add("CorectSub", 0);
+            expected.Add("CorectMul", 81);
 
 
             //Act
-            Calculete calc = new Calculete(data);
-            Dictionary<string, double> result = calc.DoCalculate();
+            var result = BatchCalculator.DoCalculate(data);
 
 
             //Assert
@@ -69,6 +84,15 @@ namespace SWITest
                 Assert.Fail();
             }
 
+            if (!expected["CorectSub"].Equals(result["CorectSub"]))
+            {
+                Assert.Fail();
+            }
+
+            if (!expected["CorectMul"].Equals(result["CorectMul"]))
+            {
+                Assert.Fail();
+            }
         }
     }
 }

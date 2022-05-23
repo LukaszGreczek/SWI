@@ -12,6 +12,16 @@
     "operator": "sqrt",
     "value1": 9
   },
+  "CorectSub": {
+    "operator": "sub",
+    "value1": 9,
+    "value2": 9
+  },
+  "CorectMul": {
+    "operator": "mul",
+    "value1": 9,
+    "value2": 9
+  },
   "IncorectOperatorValue": {
     "operator": "add",
     "value1": "a",
