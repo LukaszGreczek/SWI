@@ -24,7 +24,7 @@ namespace SWI
                 return;
             }
 
-            ResultTextFilePrinter output = new ResultTextFilePrinter(outputFilePath);//
+            ResultTextFilePrinter output = new ResultTextFilePrinter(outputFilePath);
             
             if(inputString != null)
             {
@@ -35,6 +35,10 @@ namespace SWI
             {
                 Console.WriteLine("Input file not found.");
             }
+
+            
+            Console.WriteLine("Press any key to close this window. . .");
+            Console.Read();
 
         }
     }

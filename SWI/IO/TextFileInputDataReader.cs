@@ -22,7 +22,7 @@ namespace SWI.IO
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }

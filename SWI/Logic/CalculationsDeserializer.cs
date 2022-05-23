@@ -16,20 +16,24 @@ namespace SWI.Logic
             var calculationDictionary = new Dictionary<string, Calculation>();
             
             try { 
-                CalculationDictionary cDictionary = JsonSerializer.Deserialize<CalculationDictionary>(json);
+                var cDictionary = JsonSerializer.Deserialize<CalculationDictionary>(json);
                 foreach (var c in cDictionary.Calculations)
                 {
-                    Calculation calc = TryDeserializeElement(c.Value);
+                    var calc = TryDeserializeElement(c.Value);
                     if (calc != null)
                     {
                         calculationDictionary.Add(c.Key, calc);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{c.Key} invalid data.");
                     }
 
                 }
             }
             catch
             {
-                System.Console.WriteLine("Json data wrong format");
+                System.Console.WriteLine("Json data wrong format.");
             }
 
             return calculationDictionary;
@@ -46,9 +50,11 @@ namespace SWI.Logic
                 return null;
             }
 
-            if (element.TryGetProperty("operator", out var operatorType) && element.TryGetProperty("value1", out var value1)) // return false if operator or value1 dont exist
+            if (element.TryGetProperty("operator", out var operatorType) && 
+                element.TryGetProperty("value1", out var value1)) // return false if operator or value1 dont exist
             {
-                if (!operatorType.ToString().Equals("sqrt",StringComparison.OrdinalIgnoreCase) && !element.TryGetProperty("value2", out var value2)) //return false if operator have one of value [add,sub,mull] but not have value2
+                if (!operatorType.ToString().Equals("sqrt",StringComparison.OrdinalIgnoreCase) && 
+                    !element.TryGetProperty("value2", out var value2)) //return false if operator have one of value [add,sub,mull] but not have value2
                 {
                     return null;
                 }
