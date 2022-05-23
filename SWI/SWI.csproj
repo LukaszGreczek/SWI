@@ -9,10 +9,4 @@
     <PackageReference Include="System.Text.Json" Version="6.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="input.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
